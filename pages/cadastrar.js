@@ -9,7 +9,12 @@ function Cadastrar() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log('Tarefa cadastrada:', tarefa)
+    const tarefasExistentes = JSON.parse(localStorage.getItem('tarefas')) || []
+    
+    const novasTarefas = [...tarefasExistentes, tarefa]
+    
+    localStorage.setItem('tarefas', JSON.stringify(novasTarefas))
+    
     router.push('/')
   }
 
